@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MiLB.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+</head>
+<body>
+<nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <img src="../Images/milb-august.svg" width="100%">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="scores.html">
+                SCORES
+            </a>
+
+            <a class="navbar-item" href="teams.html">
+                TEAMS
+            </a>
+            <a class="navbar-item" href="standings.html">
+                STANDINGS
+            </a>
+
+        </div>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+
+    </div>
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="field is-grouped">
+                <p class="control">
+                    <a class="button is-danger" href="https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip">
+                        <span>League Dashboard</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+</nav>
+<section class="section">
+    <div class="container">
+        <h1 class="title is-1">League Dashboard</h1>
+        <hr>
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Create a Team
+                </p>
+            </header>
+
+            <div class="card-content">
+                <div class="content">
+                    <form>
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Division</label>
+                            <div class="control">
+                                <input class="input" type="text" value="AAA" disabled>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button type="submit" class="button is-danger">Create</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
