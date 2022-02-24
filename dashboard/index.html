@@ -16,14 +16,14 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="scores.html">
+            <a class="navbar-item" href="/scores.html">
                 SCORES
             </a>
 
-            <a class="navbar-item" href="teams.html">
+            <a class="navbar-item" href="/teams.html">
                 TEAMS
             </a>
-            <a class="navbar-item" href="standings.html">
+            <a class="navbar-item" href="/standings.html">
                 STANDINGS
             </a>
 
@@ -64,21 +64,21 @@
 
             <div class="card-content">
                 <div class="content">
-                    <form>
+                    <form id="create-team-form">
                         <div class="field">
                             <label class="label">Name</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input">
+                                <input name="team_name" class="input" type="text" placeholder="Montgomery Biscuits">
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Division</label>
                             <div class="control">
-                                <input class="input" type="text" value="AAA" disabled>
+                                <input name="team_division" class="input" type="text" value="AAA" readonly>
                             </div>
                         </div>
                         <div class="field">
-                            <button type="submit" class="button is-danger">Create</button>
+                            <input type="button" class="button is-danger" onclick="submitTeamForm()" value="Create">
                         </div>
 
                     </form>
@@ -88,6 +88,6 @@
 
     </div>
 </section>
-
+<script src="data.js"></script>
 </body>
 </html>
