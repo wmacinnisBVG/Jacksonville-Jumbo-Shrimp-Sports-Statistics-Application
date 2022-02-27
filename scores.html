@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/94f541cc83.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <script>
+        $( function() {
+            $( "#from-filer" ).datepicker();
+            $( "#to-filter" ).datepicker();
+        } );
+
+    </script>
 </head>
 <body>
 <nav class="navbar is-black" role="navigation" aria-label="main navigation">
@@ -47,73 +57,28 @@
             </div>
         </div>
     </div>
-    </div>
 
-    </div>
 </nav>
 <section class="section">
     <div class="container">
         <h1 class="title is-1">Scoreboard</h1>
         <hr>
-        <div class="columns is-variable is-3-desktop">
-            <div class="column">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
+        <div class="filters" style="display: inline-block !important;">
+            <p><b>From:</b></p>
+          <input class="input is-rounded" type="text" placeholder="Date" id="from-filer">
+            <p><b>To:</b></p>
+            <input class="input is-rounded" type="text" placeholder="Date" id="to-filter">
+            <br><br>
+            <button class="button is-info" onclick="filter()">Filter</button>
+        </div>
+        <div class="columns is-desktop is-multiline" id="score-container">
 
-                            <p><b>RECAP</b> - DATE</p>
-                            <hr>
-                            <nav class="level">
-                                <!-- Left side -->
-                                <div class="level-left">
-                                    <div class="level-item">
-                                        <p class="subtitle is-3">
-                                            <strong>13</strong>&nbsp;&nbsp;<i class="fas fa-caret-left" style="color:red"></i>
-                                        </p>
-                                    </div>
-                                </div>
 
-                                <!-- Right side -->
-                                <div class="level-right">
-                                    <p class="subtitle is-3">
-                                        Team Name
-                                    </p>
-
-                                </div>
-                            </nav>
-
-                            <nav class="level">
-                                <!-- Left side -->
-                                <div class="level-left">
-                                    <div class="level-item">
-                                        <p class="subtitle is-3">
-                                            <strong>1</strong>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- Right side -->
-                                <div class="level-right">
-                                    <p class="subtitle is-3">
-                                        Team 2
-                                    </p>
-
-                                </div>
-                            </nav>
-                            <hr>
-                            <p>TEAM @ TEAM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                Second column
-            </div>
         </div>
 
 
     </div>
 </section>
-
+<script src="scores.js"></script>
 </body>
 </html>

@@ -5,7 +5,15 @@
     <title>MiLB.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
 
+    </script>
 </head>
 <body>
 <nav class="navbar is-black" role="navigation" aria-label="main navigation">
@@ -55,6 +63,7 @@
     <div class="container">
         <h1 class="title is-1">League Dashboard</h1>
         <hr>
+        <!-- Create a team -->
         <div class="card">
             <header class="card-header">
                 <p class="card-header-title">
@@ -102,6 +111,80 @@
                     </div>
                 </div>
             </div>
+        </div>
+            <br>
+            <!-- Report Score -->
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Report a Game
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div id="report-game-message" hidden>
+                        <div class="notification is-success">
+                            Game report submitted!
+                        </div>
+                        <br>
+                    </div>
+                    <div class="content">
+                        <form id="report-game-form">
+                            <div class="field">
+                                <label class="label">Date</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="datepicker" name="date">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Division</label>
+                                <div class="control">
+                                    <input name="division" class="input" type="text" value="AAA" readonly>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Home Team</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="home_team" id="home-team-selector">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Home Team Score</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <input type="number" class="input" name="home_score">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Away Team</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="away_team" id="away-team-selector">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Away Team Score</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <input type="number" class="input" name="away_score">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input type="button" class="button is-danger" onclick="reportGame()" value="Report Game">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
         </div>
 
     </div>
