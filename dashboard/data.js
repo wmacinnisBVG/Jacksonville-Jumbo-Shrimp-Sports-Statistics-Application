@@ -46,6 +46,34 @@ const reportGame = () => {
     const gameReport = {"date":date, "division":division, "home_team":homeTeam, "home_score":homeScore, "away_team":awayTeam, "away_score":awayScore};
     games.push(gameReport);
     localStorage.setItem("games", JSON.stringify(games));
+    //Check winner and update standings
+    if(parseInt(homeScore) > parseInt(awayScore)){
+        //Update wins for home team
+       const homeTeamIndex = teams.findIndex((team => team.team_name === homeTeam));
+       const currentHomeTeamWins = teams[homeTeamIndex].wins;
+       teams[homeTeamIndex].wins = currentHomeTeamWins+1;
+       console.log("After update: ", teams[homeTeamIndex]);
+       //Update losses for away team
+        const awayTeamIndex = teams.findIndex((team => team.team_name === awayTeam));
+        const currentAwayTeamLosses = teams[homeTeamIndex].losses;
+        teams[awayTeamIndex].losses = currentAwayTeamLosses+1;
+        //Set new data into local storage
+        localStorage.setItem("teams", JSON.stringify(teams));
+    } else if(parseInt(homeScore) < parseInt(awayScore)){
+        //Update losses for home team
+        const homeTeamIndex = teams.findIndex((team => team.team_name === homeTeam));
+        const currentHomeTeamLosses = teams[homeTeamIndex].losses;
+        teams[homeTeamIndex].losses = currentHomeTeamLosses+1;
+        console.log("After update: ", teams[homeTeamIndex]);
+        //Update wins for away team
+        const awayTeamIndex = teams.findIndex((team => team.team_name === awayTeam));
+        const currentAwayTeamWins = teams[homeTeamIndex].wins;
+        teams[awayTeamIndex].wins = currentAwayTeamWins+1;
+        //Set new data into local storage
+        localStorage.setItem("teams", JSON.stringify(teams));
+    }
+
+
     document.getElementById('report-game-message').style.display = 'block';
     document.getElementById("report-game-form").reset();
 
@@ -55,7 +83,7 @@ const submitTeamForm = () => {
     const teamFormData = new FormData(document.querySelector('#create-team-form'));
     const teamName = teamFormData.get('team_name');
     const teamDivision = teamFormData.get('team_division');
-    const newTeam = { "team_name": teamName, "team_division": teamDivision};
+    const newTeam = { "team_name": teamName, "team_division": teamDivision, "wins":0, "losses":0};
     updateTeams(newTeam);
 }
 /** Update Teams **/
