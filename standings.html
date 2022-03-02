@@ -59,16 +59,12 @@
         <hr>
         <div class="table is-fullwidth">
             <table id="standings-table">
-                <tr>
-                    <th>Team</th>
-                    <th onclick="pullStandings('wins')">W&nbsp;&nbsp;<i class="fas fa-caret-down"></i></th>
-                    <th>L</th>
-                    <th>PCT</th>
+                <tr id="table-header">
+                    <th>Team </th>
+                    <th style="cursor: pointer" onclick="pullStandings('wins')">W&nbsp;&nbsp;<i id="w-icon" class="fas fa-caret-down"></i></th>
+                    <th style="cursor: pointer" onclick="pullStandings('losses')">L &nbsp;<i id="l-icon" class="fas fa-caret-down"></i></th>
+                    <th style="cursor: pointer" onclick="pullStandings('pct')">PCT &nbsp;<i id="pct-icon" class="fas fa-caret-up"></i></th>
                 </tr>
-                <div id="tr-container">
-
-                </div>
-
             </table>
         </div>
 
