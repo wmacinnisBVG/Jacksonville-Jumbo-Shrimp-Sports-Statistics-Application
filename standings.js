@@ -18,7 +18,10 @@ const populateTable = () => {
         const winsTd = document.createElement('td');
         const lossesTd = document.createElement('td');
         const pctTd = document.createElement('td');
-        teamTd.innerHTML = team.team_name;
+        const href = document.createElement('a');
+        href.innerHTML = team.team_name;
+        href.setAttribute('href', `/team-score?team=${team.team_name}`);
+        teamTd.append(href);
         tr.append(teamTd);
         winsTd.innerHTML = team.wins;
         tr.append(winsTd);
@@ -60,6 +63,10 @@ const pullStandings = (filter) =>{
     } else if(filter == 'losses'){
         changeTableIcons(filter);
         TEAMS = TEAMS.sort((a,b) => (a.losses < b.losses) ? 1 : ((b.losses < a.losses) ? -1 : 0));
+        populateTable();
+    } else if(filter == 'pct'){
+        changeTableIcons(filter);
+        TEAMS = TEAMS.sort((a,b) => ((a.wins / (a.losses+a.wins)) < (b.wins / (b.losses+b.wins))) ? 1 : (((b.wins / (b.losses+b.wins)) < (a.wins / (a.losses+a.wins))) ? -1 : 0));
         populateTable();
     }
 
