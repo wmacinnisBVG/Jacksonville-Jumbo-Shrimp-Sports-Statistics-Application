@@ -20,7 +20,7 @@ const populateTable = () => {
         const pctTd = document.createElement('td');
         const href = document.createElement('a');
         href.innerHTML = team.team_name;
-        href.setAttribute('href', `/team-score?team=${team.team_name}`);
+        href.setAttribute('href', `team-score.html?team=${team.team_name}`);
         teamTd.append(href);
         tr.append(teamTd);
         winsTd.innerHTML = team.wins;

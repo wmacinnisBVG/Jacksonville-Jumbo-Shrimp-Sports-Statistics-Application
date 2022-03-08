@@ -1,3 +1,5 @@
+let cols = [];
+
 let games = JSON.parse(localStorage.getItem("games"));
 window.onload = function() {
     loadScores();
@@ -21,7 +23,7 @@ const loadScores = () =>{
         //Create elements
         const newCol = document.createElement("div");
         newCol.classList.add("column");
-        newCol.classList.add("is-one-third");
+        newCol.classList.add("is-half");
         const card = `
             <div class="column">
                         <div class="card">
@@ -73,8 +75,20 @@ const loadScores = () =>{
                     </div>
     `;
         newCol.innerHTML = card;
-        document.getElementById('score-container').append(newCol);
+
+        //document.getElementById('score-container').append(newCol);
+        cols.push(newCol);
+
     });
 
 
+}
+function numOfScores(){
+    const numOfScores = cols.length;
+    return numOfScores;
+}
+function pagination(){
+    const numOfScores = numOfScores();
+    const numOfPages = ceil(numOfScores/10);
+    return numOfPages;
 }
