@@ -1,14 +1,15 @@
 let cols = [];
-
+let pages = [];
+let selectedPage = 0;
 let games = JSON.parse(localStorage.getItem("games"));
 window.onload = function() {
     loadScores();
+    pagination();
 }
 const filter = () =>{
     const fromDate = document.getElementById('from-filer').value;
     const toDate = document.getElementById('to-filter').value;
     const newGames = games.filter(games => (game.date >= 1980 && game.start < 1990));
-
 }
 const loadScores = () =>{
     games.forEach(game => {
@@ -75,20 +76,57 @@ const loadScores = () =>{
                     </div>
     `;
         newCol.innerHTML = card;
-
-        //document.getElementById('score-container').append(newCol);
         cols.push(newCol);
-
     });
-
-
 }
-function numOfScores(){
+
+const pagination = () =>{
+    const paginationList = document.getElementById('pagination-list');
     const numOfScores = cols.length;
-    return numOfScores;
+    const numOfPages = Math.ceil(cols.length/10);
+    for (let pageNum = 0; pageNum < numOfPages; pageNum++) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        if(pageNum == 0){
+            a.className = "pagination-link is-current";
+        } else {
+            a.className = "pagination-link";
+        }
+        a.innerHTML = pageNum+1;
+        a.onclick = function() {
+            moveToPage(pageNum, "page-button-"+pageNum);
+        }
+        a.id = "page-button-"+pageNum;
+        li.append(a);
+        paginationList.append(li);
+    }
+    for(let page=1; page<numOfPages+1; page++){
+        pages.push([]);
+    }
+    let colsCount = 0;
+    let pageCount = 0;
+    cols.forEach((column) => {
+        if(pageCount<numOfPages){
+            if(colsCount==10){
+                pageCount++;
+                colsCount=0;
+            }
+            pages[pageCount].push(column);
+            colsCount++;
+
+        }
+    });
+    pages[selectedPage].forEach((page) =>{
+        document.getElementById('score-container').append(page);
+    });
 }
-function pagination(){
-    const numOfScores = numOfScores();
-    const numOfPages = ceil(numOfScores/10);
-    return numOfPages;
+const moveToPage = (page, buttonId) => {
+    document.getElementById('score-container').innerHTML = "";
+    pages[page].forEach((page) =>{
+        document.getElementById('score-container').append(page);
+    });
+    for(let x=0; x<pages.length; x++){
+        document.getElementById("page-button-"+x).className = "pagination-link";
+    }
+    document.getElementById(buttonId).className = "pagination-link is-current";
 }
