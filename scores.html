@@ -69,13 +69,10 @@
             <p><b>To:</b></p>
             <input class="input is-rounded" type="text" placeholder="Date" id="to-filter">
             <br><br>
-            <button class="button is-info" onclick="filter()">Filter</button>
+            <button class="button is-info" onclick="filter()">Filter</button>&nbsp;<button id="clear-button" class="button is-danger" onclick="location.reload()">Clear</button>
         </div>
         <div class="columns is-desktop is-multiline" id="score-container">
-
-
-
-
+        <!-- Scores -->
         </div>
         <div id="pagination-container">
             <nav class="pagination" role="navigation" aria-label="pagination">
@@ -83,12 +80,9 @@
                     <!-- Pagination buttons -->
                 </ul>
             </nav>
-
         </div>
-
     </div>
 </section>
-
 <script src="scores.js"></script>
 </body>
 </html>

@@ -7,9 +7,20 @@ window.onload = function() {
     pagination();
 }
 const filter = () =>{
-    const fromDate = document.getElementById('from-filer').value;
-    const toDate = document.getElementById('to-filter').value;
-    const newGames = games.filter(games => (game.date >= 1980 && game.start < 1990));
+    games = JSON.parse(localStorage.getItem("games"));
+    cols = [];
+    pages = [];
+    selectedPage = 0;
+    document.getElementById('score-container').innerHTML = "";
+    document.getElementById('pagination-list').innerHTML = "";
+    const fromDate = new Date(document.getElementById('from-filer').value);
+    const toDate = new Date(document.getElementById('to-filter').value);
+    games = games.filter(game => {
+        const date = new Date(game.date);
+        return (date >= fromDate && date <= toDate);
+    });
+    loadScores();
+    pagination();
 }
 const loadScores = () =>{
     games.forEach(game => {

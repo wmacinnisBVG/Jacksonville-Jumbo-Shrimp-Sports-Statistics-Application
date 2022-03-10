@@ -28,7 +28,7 @@ const populateTable = () => {
         lossesTd.innerHTML = team.losses;
         tr.append(lossesTd);
         const pct = team.wins / (team.losses+team.wins);
-        pctTd.innerHTML = pct;
+        pctTd.innerHTML = pct.toFixed(2);
         tr.append(pctTd);
         standingsTable.append(tr);
     });
